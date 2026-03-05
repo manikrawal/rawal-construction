@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>{{ page.title }} | Rawal Constructions</title>
+  <meta name="description" content="Residential renovations, kitchens, bathrooms, basements, and full remodels." />
+
+  <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}" />
+</head>
+
+<body>
+
+  {% include header.html %}
+
+  <main>
+    {{ content }}
+  </main>
+
+  {% include footer.html %}
+
+  <!-- Hamburger menu JS -->
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (toggle && navLinks) {
+      toggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        toggle.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', isOpen);
+      });
+
+      navLinks.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+          toggle.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  </script>
+
+</body>
+</html>
